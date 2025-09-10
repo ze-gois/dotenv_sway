@@ -1,0 +1,36 @@
+bindsym $mod+Shift+Escape exec swaymsg exit
+
+bindsym $mod+Mod1+d exec $editor $dotenv
+bindsym $mod+Mod1+b exec $editor ~/back/lang/sh/bin
+bindsym $mod+Mod1+e exec $editor /home/gois/back/rustics/userspace_hub
+bindsym $mod+Mod1+t exec $editor /home/gois/back/tajmahal/hub/
+
+bindsym $mod+Shift+p exec sh -c '$dotenv/sway/scripts/b00_mode.sh python'
+bindsym $mod+Shift+r exec sh -c '$dotenv/sway/scripts/b00_mode.sh rust'
+
+bindsym $mod+Ctrl+Return exec sh $dotenv/sway/scripts/twitch/convoke.sh
+bindsym $mod+Shift+Return exec sh -c '$dotenv/sway/scripts/twitch/convoke.sh 6'
+
+bindsym $mod+Shift+d exec discord
+bindsym $mod+Shift+w exec alacritty -e sh -c "$dotenv/sway/scripts/weechat/spin.sh"
+
+bindsym $mod+Shift+Mod1+s exec alacritty -e sh -c "$dotenv/sway/scripts/spotify/spin.sh"
+
+bindsym $mod+c exec $browser --new-window https://chatgpt.com/
+bindsym $mod+Ctrl+c exec $browser --new-window https://grok.com/
+bindsym $mod+shift+S exec $browser --new-window https://www.shazam.com
+
+bindsym $mod+Shift+k exec alacritty -e sh /home/gois/back/lang/sh/bin/screenkey.sh
+
+bindsym $mod+Shift+Z exec /home/gois/back/lang/sh/bin/wander_open_last
+
+bindsym $mod+z exec /home/gois/back/lang/sh/bin/spawn_cargo_new.sh
+bindsym $mod+m exec $browser --new-window https://mail.google.com/mail/u/1/
+bindsym $mod+shift+m exec $browser --new-window https://mail.google.com/mail/u/0
+
+bindsym $mod+l exec $zed /home/gois/back/lang/c/clone/linux
+bindsym $mod+Shift+A exec cd /home/gois/back/acad/ufrn && alacritty
+bindsym $mod+shift+T exec telegram-desktop
+
+bindsym $mod+Mod1+i exec $browser --new-window /home/gois/back/acad/amd.pdf
+bindsym $mod+Shift+i exec $browser --new-window /home/gois/back/acad/intel.pdf
