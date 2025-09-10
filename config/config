@@ -15,7 +15,6 @@ set $alt Mod1
 set $mod $window
 
 bindsym $mod+Shift+c reload
-bindsym $mod+Escape exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 include ~/.config/sway/mode
 
@@ -167,7 +166,7 @@ bar {
 
     #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
     #status_command i3status
-    status_command ~/.config/sway/scripts/a00_bar.sh
+    status_command $dotenv/sway/scripts/a00_bar.sh
     colors {
         statusline #ffffff
         background #323232

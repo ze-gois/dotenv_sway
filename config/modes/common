@@ -1,1 +1,1 @@
-bindsym $mod+Escape exec sh -c '~/.config/sway/scripts/b00_mode.sh default'
+bindsym $mod+Escape exec sh -c '$dotenv/sway/scripts/b00_mode.sh default'

@@ -1,1 +1,1 @@
-include /home/gois/.config/sway/modes/common
+include $dotenv/sway/config/modes/common
