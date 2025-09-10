@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
-SCRIPT_PY="$HOME/.config/sway/scripts/twitch/chromium_history.py"
-CURRENT_CHROMIUM="$HOME/.config/sway/scripts/twitch/current_chromium.sh"
+SCRIPT_PY="$DOTENV_PATH/sway/scripts/twitch/chromium_history.py"
+CURRENT_CHROMIUM="$DOTENV_PATH/sway/scripts/twitch/current_chromium.sh"
 
 MAX_OPEN=${1:-1}
 opened=0
@@ -26,6 +26,7 @@ for url in $(python "$SCRIPT_PY"); do
     opened=$((opened+1))
 
     if [ "$opened" -ge "$MAX_OPEN" ]; then
+        $messager "resize set width 14ppt"
         sleep 1
         $messager "focus parent"
         $messager "split h"
