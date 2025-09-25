@@ -1,0 +1,16 @@
+#!/usr/bin/zsh
+
+fld() {
+    last=$(find "$1" -type d -printf '%T@ %p\n' | sort -n | tail -1 | cut -d' ' -f2-)
+    dir="$last"
+    while [ "$dir" != "/" ]; do
+        if [ -f "$dir/Cargo.toml" ]; then
+            echo "$dir"
+            return 0
+        fi
+        dir=$(dirname "$dir")
+    done
+    return 1
+}
+
+zed --new $(fld /home/gois/back/lang/rust/wander)

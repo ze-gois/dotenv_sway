@@ -10,6 +10,12 @@ set $down Down
 set $up Up
 
 set $window Mod4
+set $return Return
+set $shift Shift
+set $ctrl Ctrl
+set $alt Mod1
+set $fn Fn
+
 set $alt Mod1
 
 set $mod $window
@@ -20,8 +26,8 @@ include ~/.config/sway/mode
 
 font pango:Terminus 1px
 
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +1%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%-
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
@@ -52,34 +58,19 @@ bindsym $mod+d exec $menu
 
 floating_modifier $mod normal
 
-
-
-
-
-
-
-
 set $refresh_i3status killall -SIGUSR1 i3status
 
-
 floating_modifier $mod
-
-
-
-
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-
-
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
-
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -103,70 +94,42 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
+bindsym $mod+h splith
+bindsym $mod+v splitv
 
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
 
+bindsym $mod+Shift+minus move scratchpad
 
-    bindsym $mod+h splith
-    bindsym $mod+v splitv
+bindsym $mod+minus scratchpad show
 
-
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
-
-
-    bindsym $mod+f fullscreen
-
-
-    bindsym $mod+Shift+space floating toggle
-
-
-    bindsym $mod+space focus mode_toggle
-
-
-    bindsym $mod+a focus parent
-
-
-
-
-    bindsym $mod+Shift+minus move scratchpad
-
-
-
-    bindsym $mod+minus scratchpad show
-    mode "resize" {
-
-
-
-
+mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
 
-
-
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode "resize"
 
+bindsym $mod+r mode "resize"
 
 font pango:lemon 8
 bar {
-    font pango:lemon 10
     position top
-    mode dock
-    hidden_state show
-    modifier $mod
+    font pango:lemon 10
 
-
-    #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    #status_command i3status
     status_command $dotenv/sway/scripts/a00_bar.sh
+
     colors {
         statusline #ffffff
         background #323232

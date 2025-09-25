@@ -26,10 +26,12 @@ for url in $(python "$SCRIPT_PY"); do
     opened=$((opened+1))
 
     if [ "$opened" -ge "$MAX_OPEN" ]; then
-        $messager "resize set width 14ppt"
-        sleep 1
-        $messager "focus parent"
-        $messager "split h"
+        if [ "$MAX_OPEN" -gt "1" ]; then
+            $messager "resize set width 14ppt"
+            sleep 1
+            $messager "focus parent"
+            $messager "split h"
+        fi
         break
     fi
 

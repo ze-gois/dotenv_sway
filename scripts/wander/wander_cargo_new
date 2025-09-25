@@ -1,0 +1,35 @@
+#!/usr/bin/zsh
+
+swaymsg "layout tabbed"
+
+export WANDER_DIR="/home/gois/back/lang/rust/wander"
+
+# abrir terminal para digitar o nome
+alacritty -e /usr/bin/zsh -c 'read -p "wander " name; echo $name > /tmp/cargo_project_name'
+
+# ler valor digitado
+CARGO_PROJECT=$(cat /tmp/cargo_project_name)
+rm /tmp/cargo_project_name
+
+# fallback caso vazio
+WANDER_PATH=""
+if [ -z "$CARGO_PROJECT" ]; then
+    WANDER_PATH="temporary"
+    CARGO_PROJECT="unlabel_project_$(date +%Y%m%d%H%M%S)"
+else
+    WANDER_PATH=$(dirname $CARGO_PROJECT)
+    CARGO_PROJECT=$(basename $CARGO_PROJECT)
+fi
+
+if [ "$WANDER_PATH" = "." ]; then
+    WANDER_PATH="temporary"
+fi
+
+PROJECT_DIR="$WANDER_DIR/$WANDER_PATH"
+
+echo $PROJECT_DIR
+mkdir -p $PROJECT_DIR
+cd $PROJECT_DIR
+cargo new "$CARGO_PROJECT"
+cd "$PROJECT_DIR/$CARGO_PROJECT"
+zed --new . src/main.rs

@@ -9,11 +9,11 @@ mode="$1"
 
 # verifica se o modeo existe
 if [ ! -f ~/.config/sway/modes/$mode ]; then
-    echo "Contexto '$mode' não existe!"
-    exit 1
+  echo "Contexto '$mode' não existe!"
+  exit 1
 fi
 
-rm ~/.config/sway/modes/mode
+rm ~/.config/sway/mode
 
 # atualiza o symlink
 ln -sf ~/.config/sway/modes/$mode ~/.config/sway/mode

@@ -1,1 +1,6 @@
 bindsym $mod+Escape exec sh -c '$dotenv/sway/scripts/b00_mode.sh default'
+bindsym $mod+$shift+Escape exec $dotenv/sway/scripts/z99_exit.sh
+
+bindsym $mod+c exec $browser --new-window https://chatgpt.com/
+bindsym $mod+$ctrl+c exec $browser --new-window https://grok.com/
+bindsym $mod+$shift+S exec $browser --new-window https://www.shazam.com

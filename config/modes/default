@@ -1,37 +1,41 @@
-bindsym $mod+Escape exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-bindsym $mod+Shift+Escape exec swaymsg exit
+bindsym $mod+Escape exec $dotenv/sway/scripts/z99_exit.sh
+bindsym $mod+$shift+Escape exec swaymsg exit
 
-bindsym $mod+Mod1+d exec $editor $dotenv
-bindsym $mod+Mod1+b exec $editor ~/back/lang/sh/bin
-bindsym $mod+Mod1+e exec $editor /home/gois/back/rustics/userspace_hub
-bindsym $mod+Mod1+t exec $editor /home/gois/back/tajmahal/hub/
+bindsym $mod+$shift+p exec sh -c '$dotenv/sway/scripts/b00_mode.sh python'
+bindsym $mod+$shift+r exec sh -c '$dotenv/sway/scripts/b00_mode.sh rust'
 
-bindsym $mod+Shift+p exec sh -c '$dotenv/sway/scripts/b00_mode.sh python'
-bindsym $mod+Shift+r exec sh -c '$dotenv/sway/scripts/b00_mode.sh rust'
-
-bindsym $mod+Ctrl+Return exec sh $dotenv/sway/scripts/twitch/convoke.sh
-bindsym $mod+Shift+Return exec sh -c '$dotenv/sway/scripts/twitch/convoke.sh 6'
-
-bindsym $mod+Shift+d exec discord
-bindsym $mod+Shift+w exec alacritty -e sh -c "$dotenv/sway/scripts/weechat/spin.sh"
-
-bindsym $mod+Shift+Mod1+s exec alacritty -e sh -c "$dotenv/sway/scripts/spotify/spin.sh"
+bindsym $mod+$alt+d exec $editor $dotenv
+bindsym $mod+$alt+z exec $editor /home/gois/tmp /home/gois/tmp/unlabel_temporary_$(date +%Y%m%d%H%M%S)
+bindsym $mod+$alt+u exec $editor /home/gois/back/acad/ufrn
+bindsym $mod+$alt+b exec $editor /home/gois/back/lang/sh/bin
+bindsym $mod+$alt+e exec $dotenv/sway/scripts/a01_uh.sh
 
 bindsym $mod+c exec $browser --new-window https://chatgpt.com/
-bindsym $mod+Ctrl+c exec $browser --new-window https://grok.com/
-bindsym $mod+shift+S exec $browser --new-window https://www.shazam.com
+bindsym $mod+$ctrl+c exec $browser --new-window https://grok.com/
+bindsym $mod+$shift+S exec $browser --new-window https://www.shazam.com
 
-bindsym $mod+Shift+k exec alacritty -e sh /home/gois/back/lang/sh/bin/screenkey.sh
+bindsym $mod+l exec $editor /home/gois/back/lang/c/clone/linux
+bindsym $mod+$alt+i exec $browser --new-window /home/gois/back/acad/amd.pdf
+bindsym $mod+$shift+i exec $browser --new-window /home/gois/back/acad/intel.pdf
 
-bindsym $mod+Shift+Z exec /home/gois/back/lang/sh/bin/wander_open_last
+bindsym $mod+z exec $dotenv/sway/scripts/wander/wander
+bindsym $mod+$shift+Z exec $dotenv/sway/scripts/wander/wander_open_last
 
-bindsym $mod+z exec /home/gois/back/lang/sh/bin/spawn_cargo_new.sh
+bindsym $mod+$shift+w exec alacritty -e sh -c "$dotenv/sway/scripts/weechat/spin.sh"
+
+bindsym $mod+$shift+$alt+s exec alacritty -e sh -c "$dotenv/sway/scripts/spotify/spin.sh"
+
+bindsym $mod+$shift+k exec alacritty -e sh /home/gois/back/lang/sh/bin/screenkey.sh
+
 bindsym $mod+m exec $browser --new-window https://mail.google.com/mail/u/1/
-bindsym $mod+shift+m exec $browser --new-window https://mail.google.com/mail/u/0
+bindsym $mod+$shift+m exec $browser --new-window https://mail.google.com/mail/u/0
 
-bindsym $mod+l exec $zed /home/gois/back/lang/c/clone/linux
-bindsym $mod+Shift+A exec cd /home/gois/back/acad/ufrn && alacritty
-bindsym $mod+shift+T exec telegram-desktop
+bindsym $mod+$shift+d exec discord
+bindsym $mod+$shift+a exec cd /home/gois/back/acad/ufrn && alacritty
+bindsym $mod+$shift+t exec telegram-desktop
 
-bindsym $mod+Mod1+i exec $browser --new-window /home/gois/back/acad/amd.pdf
-bindsym $mod+Shift+i exec $browser --new-window /home/gois/back/acad/intel.pdf
+bindsym $mod+$shift+$return exec $dotenv/sway/scripts/twitch/convoke.sh 6
+bindsym $mod+$ctrl+$return exec $dotenv/sway/scripts/twitch/convoke.sh
+bindsym $mod+$alt+$return exec $dotenv/sway/scripts/twitch/seek.sh
+
+bindsym $mod+$alt+t exec $dotenv/sway/scripts/tango/convoke.sh 3

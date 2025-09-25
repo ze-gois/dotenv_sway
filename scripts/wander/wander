@@ -1,0 +1,52 @@
+#!/usr/bin/env zsh
+
+swaymsg "layout tabbed"
+
+# WANDER_ARG="$*" alacritty -e zsh -i
+
+export WANDER_DIR="${WANDER_DIR:-/home/gois/back/lang/rust/wander}"
+
+# pick project name:
+if [ -n "$1" ]; then
+    # completion gave us an argument
+    CARGO_PROJECT="$1"
+else
+    # interactive fallback
+    # alacritty -e zsh -c 'read -p "Nome do projeto: " name; echo $name > /tmp/cargo_project_name'
+    # CARGO_PROJECT=$(cat /tmp/cargo_project_name)
+    # rm /tmp/cargo_project_name
+fi
+
+# fallback caso vazio
+WANDER_PATH=""
+if [ -z "$CARGO_PROJECT" ]; then
+    WANDER_PATH="temporary"
+    CARGO_PROJECT="unlabel_project_$(date +%Y%m%d%H%M%S)"
+else
+    WANDER_PATH=$(dirname "$CARGO_PROJECT")
+    CARGO_PROJECT=$(basename "$CARGO_PROJECT")
+fi
+
+[ "$WANDER_PATH" = "." ] && WANDER_PATH="temporary"
+
+PROJECT_DIR="$WANDER_DIR/$WANDER_PATH"
+TARGET_DIR="$PROJECT_DIR/$CARGO_PROJECT"
+
+echo "Target: $TARGET_DIR"
+mkdir -p "$PROJECT_DIR"
+
+# create or open
+if [ -d "$TARGET_DIR" ]; then
+    echo "Opening existing project..."
+else
+    echo "Creating new project..."
+    cargo new "$TARGET_DIR" || exit 1
+    cd "$TARGET_DIR"
+    rustup override set nightly
+    cargo add kernelspace
+    cargo add userspace --features with_std
+    cargo add ample
+fi
+
+cd "$TARGET_DIR" || exit 1
+zed --new . src/main.rs
