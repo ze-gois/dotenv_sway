@@ -5,5 +5,5 @@ bindsym $mod+$alt+p exec $editor ~/back/lang/python/startup
 
 bindsym $mod+p exec alacritty -e sh -c 'PYTHONSTARTUP=~/back/lang/python/startup/main.py python'
 bindsym $mod+$ctrl+p exec ~/back/lang/python/startup/jupyter_lab.sh
-bindsym $mod+$shift+p exec alacritty -e sh -c 'cd ~/back/lang/python/startup/wander && PYTHONSTARTUP=~/back/lang/python/startup/main.py jupyter lab'
+bindsym $mod+$shift+p exec alacritty -e sh -c '$dotenv/sway/scripts/python/jupyter_lab.sh'
 #

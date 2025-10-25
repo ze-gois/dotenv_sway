@@ -26,6 +26,7 @@ include ~/.config/sway/mode
 
 font pango:Terminus 1px
 
+bindsym $mod+comma exec firefox --new-window https://rn.superau.la/main/agenda
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +1%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%-
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
@@ -37,8 +38,9 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
-bindsym $mod+Print exec sh -c '/home/gois/back/lang/sh/bin/sway_flameshot.sh -c'
-bindsym Print exec sh -c /home/gois/back/lang/sh/bin/sway_flameshot_ocr.sh
+bindsym Print exec sh -c '/home/gois/back/lang/sh/bin/sway_flameshot.sh -c'
+bindsym $ctrl+Print exec sh -c /home/gois/back/lang/sh/bin/sway_flameshot_ocr.sh
+bindsym $mod+Print exec sh -c '$dotenv/sway/scripts/flameshot/flameshot_default.sh'
 
 input type:touchpad {
     dwt enabled

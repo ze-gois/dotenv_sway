@@ -39,3 +39,4 @@ bindsym $mod+$ctrl+$return exec $dotenv/sway/scripts/twitch/convoke.sh
 bindsym $mod+$alt+$return exec $dotenv/sway/scripts/twitch/seek.sh
 
 bindsym $mod+$alt+t exec $dotenv/sway/scripts/tango/convoke.sh 3
+bindsym $mod+$alt+g exec $dotenv/sway/scripts/globoplay/convoke.sh 6
